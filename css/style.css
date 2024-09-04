@@ -1,16 +1,294 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+
+/** ------- VARIABLES ------- */
+:root {
+/* Primary */
+  --green200-lighter: hsl(148, 38%, 91%);
+  --green600-medium: hsl(169, 82%, 27%);
+  --green-hover: hsl(169, 82%, 15%);
+  --red: hsl(0, 66%, 54%);
+
+/* Neutral */
+  --white: hsl(0, 0%, 100%);
+  --grey500-medium: hsl(186, 15%, 59%);
+  --grey900-darker: hsl(187, 24%, 22%);
+
+/* Media querys */
+  --mobile: 375px;
+  --desktop: 1440px;
+}
+
+
+/** ------- GENERALES ------- */
 html {
+    font-size: 62.5%;
     box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: "Karla", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 1.6rem;
+
+  background-color: var(--green200-lighter);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; 
+}
+
+a {
+  text-decoration: none;
+}
+
+h1, h2, h3 {
+  margin: 0 0 5rem 0;
+ /*  font-weight: 900; */
+}
+
+h1 {
+  font-size: 4rem;
+}
+
+h2 {
+  font-size: 4.6rem;
+}
+
+h3 {
+  font-size: 6rem;
+  text-align: center;
+}
+
+p {
+  color: black;
+  line-height: 1.5;
+}
+
+img {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+label {
+  font-size: 16px;
+}
+
+
+/** ------ MODAL ------- */
+.modal {
+  position: fixed;
+  top: 2rem;
+  left: 50%; /* esto lo lleva a la mitad */
+  transform: translateX(-50%); /* esto posiciona a la mitad, de la mitad anterior */
+  width: 80%;
+  font-size: 1.3rem;
+  border-radius: 1.5rem;
+  background-color: var(--green600-medium);
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+@media screen and (min-width: 768px) {
+  .modal {
+    width: 40%;
   }
-  *, *:before, *:after {
-    box-sizing: inherit;
+}
+
+.modal div {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.modal p {
+  color: inherit;
+}
+
+.modal__icon {
+  width: 1.5rem;
+}
+
+/** ------ FORM ------- */
+.form__container {
+  background-color: var(--white);
+  width: 90%; 
+  margin: 3rem 0; 
+  padding: 2rem 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px -5px rgba(0,0,0,0.5);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.form__header {
+  margin-bottom: 2rem;
+}
+
+.form__group {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.form__group:last-of-type {
+  gap: .5rem;
+}
+
+@media screen and (min-width: 768px) {
+  .form__group {
+    grid-template-columns: repeat(2, 1fr);
   }
 
+  .form__group:last-of-type {
+    gap: 2rem;
+  }
+}
+
+.form__tag {
+  color: var(--grey900-darker);
+}
+
+.form__label {
+  display: block;
+  margin-top: 1rem;
+  padding: 1rem 2rem;
+  border: solid 1px var(--grey500-medium);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.form__label-check {
+  accent-color: var(--green600-medium); /** color del check */
+}
+
+.form__label-check:hover {
+  border: solid 1.9px var(--green600-medium);
+}
+
+.form__input {
+  width: 100%;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1.5px solid var(--grey500-medium);
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.form__input:focus {
+  outline: none;
+  border: 1.9px solid var(--green600-medium);
+}
+
+.form__message {
+  height: 10rem;
+  width: 100%;
+  resize: none;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1.5px solid var(--grey500-medium);
+  cursor: pointer;
+}
+
+.form__message:focus {
+  outline: none;
+  border: 1.9px solid var(--green600-medium);
+}
+
+.form__message-characters {
+  font-size: 1.3rem;
+  font-style: italic;
+}
+
+.form__label-consent,
+.form__input-consent {
+  display: block;
+  cursor: pointer;
+}
+
+.form__label-consent {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.form__input-consent {
+  accent-color: var(--green600-medium);
+  
+}
+
+.form__submit {
+  background-color: var(--green600-medium);
+  color: var(--white);
+  font-weight: bold;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  transition: 200ms all ease;
+}
+
+.form__submit:hover {
+  background-color: var(--green-hover);
+}
+
+.form__error,
+.form__validation {
+  color: var(--red);
+  display: inline-block;
+  padding: 1rem 0;
+  font-size: 1.6rem;
+}
 
 
-/* Attribution */
+/** ------ UTILITIES ------- */
+.radio-selected {
+  border: solid 1.9px var(--green600-medium);
+  background-color: var(--green200-lighter);
+}
+
+/** ------- Errors ------- */
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hidden-error {
+  display: none;
+}
+
+/** ------- Attribution ------- */
 .attribution { 
     font-size: 11px; 
     text-align: center; 
+    margin-bottom: 2rem;
+    text-align: center;
+    max-width: 90%;
 }
 
 .attribution a { 
