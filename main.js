@@ -14,30 +14,29 @@ document.addEventListener('DOMContentLoaded', function() {
     const message = document.querySelector('#message');
     const btnSubmit = document.querySelector('#btnSubmit');
 
-    const query =document.querySelector('#query');
-
-    console.log(query.children[0].childNodes[1].checked);
-    console.log(query.children[0]);
-    console.log(query.querySelector('input'));
+    const query = document.querySelector('#query');
     
 
-
-    //* Funciones
+    //* Functions
 
     // Change Radio Background
     const changeRadioBg = () => {
         const radio = query.querySelectorAll('input');
-
-        if (radio.checked) {
-            query.children[0].classList.add('radio-selected');
-        } else {
-            query.children.classList.remove('radio-selected');
-        }
+        
+        radio.forEach((button) => {
+            if (button.checked) {
+                button.parentNode.classList.add('radio-selected');
+            } else {
+                button.parentNode.classList.remove('radio-selected');
+            }
+        });
     }
 
-    changeRadioBg();
 
-    //! Algo no funciona 
-
-
+    //* Eventos
+    // Add an event listener to the radio buttons
+    query.querySelectorAll('input').forEach((button) => {
+        button.addEventListener('click', changeRadioBg);
+    });
 });
+
