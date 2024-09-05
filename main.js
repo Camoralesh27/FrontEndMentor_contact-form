@@ -64,7 +64,6 @@ document.addEventListener('DOMContentLoaded', function() {
         //Comprobar el objeto de email
         comprobarEmail();
 
-        console.log(email);
     }
 
     function mostrarAlerta(mensaje, referencia) {
