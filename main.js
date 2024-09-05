@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const message = document.querySelector('#message');
     const btnSubmit = document.querySelector('#submit');
     const query = document.querySelector('#query');
+    const toast = document.querySelector('#toast');
 
     //* --> Change Radio Background
     const changeRadioBg = () => {
@@ -21,7 +22,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         radio.forEach((button) => {
             if (button.checked) {
-                console.log(button);
                 button.parentNode.classList.add('radio-selected');
             } else {
                 button.parentNode.classList.remove('radio-selected');
@@ -107,7 +107,39 @@ document.addEventListener('DOMContentLoaded', function() {
         btnSubmit.classList.remove('opacity-50')
         btnSubmit.disabled = false;
     }
+
+
+
+//* --> Display toast 
+function enviarEmail(e) {
+    e.preventDefault();
+
+    setTimeout(() => {
+        toast.classList.remove('hidden');
+        
+        resetFormulario();
+
+        setTimeout(() => {
+            toast.classList.add('hidden');
+        }, 3000);
+    }, 10)
+}
+
+function resetFormulario() {
+    email.email = '';
+    email.asunto = '';
+    email.mensaje = '';
+    
+    form.reset();
+    comprobarEmail();
+}
+
+form.addEventListener('submit', enviarEmail);
+
+
 });
+
+
 
 
 
