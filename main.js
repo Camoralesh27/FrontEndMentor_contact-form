@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() { 
-    const email = {
+    let email = {
         firstName: '',
         lastName: '',
         email: '',
@@ -89,25 +89,35 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function validarEmail(email) {
         //'expresion regular' para email en JS
-        const regex =  /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/ 
+        const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
         const resultado = regex.test(email)
         return resultado;
     }
 
     const checkbox = document.querySelector('#consent');
-
+    checkbox.addEventListener('change',comprobarEmail);
 
     function comprobarEmail() {
-        if(Object.values(email).includes('')) {
-            btnSubmit.classList.add('opacity-50')
+        const isEmailComplete = Object.values(email).every(value => value !== '');
+        const isCheckboxChecked = checkbox.checked;
+        const isRadioSelected = query.querySelector('input[type="radio"]:checked') !== null;
+
+        console.log(isEmailComplete, isCheckboxChecked, isRadioSelected);
+    
+        if (isEmailComplete && isCheckboxChecked && isRadioSelected) {
+            btnSubmit.classList.remove('opacity-50');
+            btnSubmit.disabled = false;
+        } else {
+            btnSubmit.classList.add('opacity-50');
             btnSubmit.disabled = true;
-            return;
-        } 
-        
-        btnSubmit.classList.remove('opacity-50')
-        btnSubmit.disabled = false;
+        }
     }
 
+    const queryInputs = document.querySelectorAll('#query input[type="radio"]');
+
+queryInputs.forEach(input => {
+  input.addEventListener('change', comprobarEmail);
+});
 
 
 //* --> Display toast 
@@ -126,10 +136,7 @@ function enviarEmail(e) {
 }
 
 function resetFormulario() {
-    email.email = '';
-    email.asunto = '';
-    email.mensaje = '';
-    
+    email = {}
     form.reset();
     comprobarEmail();
 }
