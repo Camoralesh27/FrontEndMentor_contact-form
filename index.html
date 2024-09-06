@@ -39,7 +39,7 @@
         <div class="form__group">
           <label for="first-name" class="form__tag">
             First Name *
-            <input type="text" name="firstName" id="first-name" class="form__input" placeholder="Enter your first name" required>
+            <input type="text" name="firstName" id="first-name" class="form__input" placeholder="Enter your first name" tabindex="1" autofocus required>
           </label>
 
           <span class="form__error hidden-error">This field is required</span>
@@ -49,7 +49,7 @@
         <div class="form__group">
           <label for="last-name" class="form__tag">
             Last Name *
-            <input type="text" name="lastName" id="last-name" class="form__input" placeholder="Enter your last name" required>
+            <input type="text" name="lastName" id="last-name" class="form__input" placeholder="Enter your last name" tabindex="2" required>
           </label>
 
           <span class="form__error hidden-error">This field is required</span>
@@ -62,7 +62,7 @@
       <div class="form__group">
         <label for="email" class="form__tag">
           Email Adress *
-          <input type="email" name="email" id="email" class="form__input" placeholder="Enter your email" required>
+          <input type="email" name="email" id="email" class="form__input" placeholder="Enter your email" tabindex="3" required>
         </label>
 
         <span class="form__error hidden-error">This field is required</span>
@@ -76,13 +76,13 @@
           
           <div class="form__block" id="query">
             <label for="general-enquiry" class="form__label form__label-check" >
-              <input class="form__label-check" type="radio" name="query" id="general-enquiry" required>
+              <input class="form__label-check" type="radio" name="query" id="general-enquiry" tabindex="4" required>
               General Enquiry
             </label>
             
   
             <label for="support-request" class="form__label form__label-check">
-              <input class="form__label-check" type="radio" name="query" id="support-request" required>
+              <input class="form__label-check" type="radio" name="query" id="support-request" tabindex="5" required>
               Support Request
             </label>
           </div> <!-- .form__group -->
@@ -95,7 +95,7 @@
       <div class="form__group">
         <label for="message" class="form__tag">
           Message * 
-          <textarea name="message" id="message" class="form__message" rows="4" maxlength="120" placeholder="Enter your message" required></textarea>
+          <textarea name="message" id="message" class="form__message" rows="4" maxlength="120" placeholder="Enter your message" tabindex="6" required></textarea>
           <span class="form__message-characters">(max. 120 characters)</span>
         </label>
         <br>
@@ -105,7 +105,7 @@
 
       <div class="form__group form__consent">
         <label for="consent" class="form__tag form__label-consent">
-          <input type="checkbox" name="consent" id="consent" class="form__input-consent" required>
+          <input type="checkbox" name="consent" id="consent" class="form__input-consent" tabindex="7" accesskey="Enter" required>
            I consent to being contacted by the team *
         </label>
 
@@ -114,7 +114,7 @@
 
 
       <!-- button -->
-      <input id="submit" type="submit" value="Submit" class="form__submit opacity-50">
+      <input id="submit" type="submit" value="Submit" class="form__submit opacity-50" tabindex="8">
     </form>
     <!-- . form -->
   </div> <!-- . container -->

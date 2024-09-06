@@ -143,7 +143,6 @@ function resetFormulario() {
 
 form.addEventListener('submit', enviarEmail);
 
-
 });
 
 
